@@ -7,6 +7,9 @@
 rbac:
   enabled: true
 
+# Create Prometheus and Grafana Services
+monitoring:
+  enabled: true
 
 # Dependency configuration values
 # -------------------------------

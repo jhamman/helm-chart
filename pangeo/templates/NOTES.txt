@@ -1,7 +1,7 @@
 Pangeo
 ------
 
-Thank you for installing Pangeo!
+Thank you for installing the Pangeo Helm Chart!
 
 Your release is named {{.Release.Name}} and installed into the namespace {{.Release.Namespace}}.
 
@@ -25,4 +25,4 @@ It might take a few minutes for it to appear!
 Support
 -------
 
-Note that this is still an alpha release! If you have questions, feel free to file issues at https://github.com/pangeo-data/pangeo/issues.
+Note that this is still an alpha release! If you have questions, feel free to file issues at https://github.com/pangeo-data/helm-chart/issues.
