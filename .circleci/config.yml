@@ -86,6 +86,7 @@ jobs:
           name: deploy chart
           command: |
               helm repo add jupyterhub https://jupyterhub.github.io/helm-chart
+              helm repo add dask-gateway https://dask.org/dask-gateway-helm-repo
               helm repo update
               cd pangeo
               helm dependency update
