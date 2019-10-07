@@ -48,10 +48,7 @@ jupyterhub:
 #      limit: 4G
 #      guarantee: 2G
 
-
 gateway:
-  # proxyToken: <SECRET>
-
   clusterManager:
     clusterStartTimeout: 600
     workerStartTimeout: 600
@@ -69,5 +66,3 @@ gateway:
             value: "worker"
   auth:
     type: jupyterhub
-    # jupyterhub:
-      # apiToken: <SECRET>
