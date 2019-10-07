@@ -44,7 +44,7 @@ jupyterhub:
     enabled: true
 
 gateway:
-  proxyToken: "9e942640fd8ee885358e9d36991a22cccec58c8f855aebf7a95644f46d0eb9c0"
+  proxyToken: 9e942640fd8ee885358e9d36991a22cccec58c8f855aebf7a95644f46d0eb9c0
   auth:
     type: jupyterhub
     jupyterhub:
