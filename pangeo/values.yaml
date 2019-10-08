@@ -48,21 +48,22 @@ jupyterhub:
 #      limit: 4G
 #      guarantee: 2G
 
-gateway:
-  clusterManager:
-    clusterStartTimeout: 600
-    workerStartTimeout: 600
-    worker:
-      extraPodConfig:
-        tolerations:
-          - key: "k8s.dask.org_dedicated"
-            operator: "Equal"
-            value: "worker"
-    scheduler:
-      extraPodConfig:
-        tolerations:
-          - key: "k8s.dask.org_dedicated"
-            operator: "Equal"
-            value: "worker"
-  auth:
-    type: jupyterhub
+dask-gateway:
+  gateway:
+    clusterManager:
+      clusterStartTimeout: 600
+      workerStartTimeout: 600
+      worker:
+        extraPodConfig:
+          tolerations:
+            - key: "k8s.dask.org_dedicated"
+              operator: "Equal"
+              value: "worker"
+      scheduler:
+        extraPodConfig:
+          tolerations:
+            - key: "k8s.dask.org_dedicated"
+              operator: "Equal"
+              value: "worker"
+    auth:
+      type: jupyterhub
