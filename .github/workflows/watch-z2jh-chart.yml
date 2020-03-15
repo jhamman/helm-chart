@@ -1,0 +1,53 @@
+name: Check for new versions of the pangeo/base-notebook image
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    if: github.repository == 'pangeo-data/helm-chart'
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get latest JupyterHub tag
+        id: z2jh_tag
+        uses: jacobtomlinson/gha-get-helm-chart-tags@TODO
+        with:
+          chart: "https://jupyterhub.github.io/helm-chart/"
+      - name: Get latest Dask-Gateway tag
+        id: gateway_tag
+        uses: jacobtomlinson/gha-get-helm-chart-tags@TODO
+        with:
+          chart: "https://dask.org/dask-gateway-helm-repo/"
+      - name: Read Helm Chart
+        id: chart
+        uses: jacobtomlinson/gha-read-helm-chart@0.1.1
+        with:
+          path: pangeo
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@0.1.0
+        with:
+          include: "pangeo/"
+          find: "${{ steps.chart.outputs.dependencies.jupyterhub.version }}"
+          replace: "${{ steps.z2jh_tag.outputs.tag }}"
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@0.1.0
+        with:
+          include: "pangeo/"
+          find: "${{ steps.chart.outputs.dependencies.dask-gateway.version }}"
+          replace: "${{ steps.gateway_tag.outputs.tag }}"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "Update Chart dependencies"
+          title: "Update JupyterHub and/or Dask-Gateway versions"
+          reviewers: "jacobtomlinson"
+          branch: "upgrade-chart-deps"
+          body: |
+            New chart dependencies have been detected.
+
+            Updated chart to use Zero-to-JupyterHub Version: `${{ steps.z2jh_tag.outputs.tag }}`.
+            Updated chart to use Dask-Gateway Version: `${{ steps.gateway_tag.outputs.tag }}`.
