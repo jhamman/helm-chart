@@ -1,4 +1,5 @@
 # Pangeo Helm Chart
+
 [![Build Status](https://travis-ci.org/pangeo-data/helm-chart.svg?branch=master)](https://travis-ci.org/pangeo-data/helm-chart) [![CircleCI](https://circleci.com/gh/pangeo-data/helm-chart/tree/master.svg?style=svg)](https://circleci.com/gh/pangeo-data/helm-chart/tree/master)
 
 This is the helm chart for installing Pangeo.
@@ -6,7 +7,9 @@ This is the helm chart for installing Pangeo.
 This chart is mainly going to be a wrapper to subcharts along with custom resources to tie them together.
 
 Chart dependencies:
- - [jupyterhub](https://zero-to-jupyterhub.readthedocs.io/en/latest/)
+
+- [jupyterhub](https://zero-to-jupyterhub.readthedocs.io/en/latest/)
+- [dask-gateway](https://gateway.dask.org/)
 
 ## Usage
 

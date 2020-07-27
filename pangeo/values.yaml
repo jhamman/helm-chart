@@ -20,7 +20,7 @@ jupyterhub:
   singleuser:
     image:
       name: pangeo/base-notebook
-      tag: 2019.09.23
+      tag: 2020.07.26
     defaultUrl: "/lab"
     serviceAccountName: daskkubernetes
   prePuller:
@@ -36,11 +36,11 @@ jupyterhub:
     userPlaceholder:
       enabled: true
       replicas: 2
-  hub:
-    services:
-      dask-gateway:
-        # This makes the gateway available at ${HUB_URL}/services/dask-gateway
-        url: http://web-public-dev-staging-dask-gateway
+#   hub:
+#     services:
+#       dask-gateway:
+#         # This makes the gateway available at ${HUB_URL}/services/dask-gateway
+#         url: http://web-public-dev-{namespace}-dask-gateway
 
 # Resource specifications
 # -----------------------
